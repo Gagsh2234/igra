@@ -1,0 +1,35 @@
+<!-- ...existing code... -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <title>Интерактивная игра - угадай блюдо</title>
+    <link rel="stylesheet" href="xax.css">
+</head>
+<body>
+    <header>
+        <h1>Интерактивная игра</h1>
+        <p class="subtitle">угадай блюдо</p>
+        <div id="progress"><div id="bar"></div><div id="progressText"></div></div>
+    </header>
+
+    <main id="game">
+        <div id="card">
+            <img id="foodImage" src="" alt="блюдо">
+        </div>
+
+        <div id="options"></div>
+
+        <div id="overlay" class="hidden">
+            <div class="result">
+                <div id="badge" class="badge"></div>
+                <h2 id="resultText">Правильно!</h2>
+                <button id="nextBtn">Следующий уровень</button>
+            </div>
+        </div>
+    </main>
+
+    <script src="xax.js"></script>
+</body>
+</html>
+<!-- ...existing code... -->

@@ -1,0 +1,85 @@
+/* ...existing code... */
+:root{
+  --bg:#4e3b33;
+  --card:#3b2f2a;
+  --accent:#f3d6da;
+  --btn:#f0caca;
+  --accent-strong:#5b2aff;
+  --good:#2ec96f;
+  --bad:#ff5c5c;
+}
+*{box-sizing:border-box;font-family:Inter, system-ui, Arial, sans-serif}
+body{
+  margin:0;
+  background:var(--bg);
+  color:#f0eaf0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  min-height:100vh;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+header{ text-align:center; padding:18px 10px 8px; border-bottom:2px solid rgba(255,255,255,0.06); width:100%; max-width:1100px; }
+h1{ margin:6px 0 0; font-size:34px; color:#e9dff0 }
+.subtitle{ margin:6px 0 10px; font-size:18px; color:#e8dfe8 }
+
+/* progress */
+#progress{ height:10px; background:rgba(255,255,255,0.06); border-radius:10px; margin:10px auto 0; width:80%; max-width:700px; position:relative; overflow:hidden }
+#bar{ height:100%; width:0%; background:linear-gradient(90deg,var(--accent-strong),#23a6f0); border-radius:10px; transition:width 600ms cubic-bezier(.2,.9,.2,1) }
+#progressText{ position:absolute; right:12px; top:-26px; font-size:13px; color:#f5eef5 }
+
+/* card */
+#card{ width:80%; max-width:600px; margin:26px auto; background:var(--card); padding:18px; border-radius:24px; display:flex; justify-content:center; box-shadow:0 8px 30px rgba(0,0,0,0.5); transform:translateY(0); transition:transform 300ms }
+#card img{ width:100%; height:auto; border-radius:20px; max-height:420px; object-fit:cover; display:block }
+
+/* options */
+#options{ width:82%; max-width:980px; display:flex; justify-content:space-between; gap:22px; margin:28px auto; flex-wrap:wrap; align-items:center }
+.option{
+  background:var(--btn);
+  color:#231;
+  padding:18px 28px;
+  border-radius:22px;
+  flex:1 1 30%;
+  text-align:center;
+  font-weight:800;
+  cursor:pointer;
+  user-select:none;
+  min-width:160px;
+  box-shadow:0 6px 18px rgba(0,0,0,0.25);
+  transition:transform 220ms ease, box-shadow 220ms ease, background 220ms;
+  transform-origin:center;
+}
+.option:hover{ transform:translateY(-6px) scale(1.02); box-shadow:0 14px 30px rgba(0,0,0,0.35) }
+.option.disabled{ pointer-events:none; opacity:0.7 }
+.option.correct{ background:linear-gradient(90deg, #b6ffd9, #2ec96f); color:#033 }
+.option.wrong{ background:linear-gradient(90deg, #ffd6d6, #ff5c5c); color:#300 }
+
+/* overlay result */
+#overlay{ position:fixed; inset:0; display:flex; align-items:center; justify-content:center; background:rgba(0,0,0,0.5); z-index:60 }
+#overlay.hidden{ display:none }
+.result{ background:#f7f7f7; color:#000; padding:26px 28px; border-radius:18px; text-align:center; min-width:320px; box-shadow:0 20px 50px rgba(0,0,0,0.45); transform:scale(.9); opacity:0; animation:popIn .36s forwards }
+@keyframes popIn{ to{ transform:scale(1); opacity:1 } }
+
+/* badge (check mark) */
+.badge{ width:92px; height:92px; border-radius:50%; margin:0 auto 8px; background:linear-gradient(135deg,#b7765a,#4e3b33); display:flex; align-items:center; justify-content:center; box-shadow:0 8px 30px rgba(91,42,255,0.28) }
+.badge::after{
+  content:"";
+  width:48px;height:32px; background:transparent; display:block; mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="white" d="M20.285 6.708l-11.025 11.02-5.545-5.545 1.414-1.414 4.131 4.13 9.611-9.611z"/></svg>') no-repeat center / contain;
+  -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="white" d="M20.285 6.708l-11.025 11.02-5.545-5.545 1.414-1.414 4.131 4.13 9.611-9.611z"/></svg>') no-repeat center / contain;
+  transform:scale(0);
+  transition:transform 360ms cubic-bezier(.2,.9,.2,1);
+}
+.result.win .badge::after{ transform:scale(1) }
+
+/* text + button */
+#resultText{ margin:8px 0 0; font-size:22px; font-weight:800; color:#111 }
+#nextBtn{ margin-top:14px; background:#4e3b33; color:#fff; border:none; padding:12px 18px; border-radius:12px; cursor:pointer; font-weight:800; box-shadow:0 8px 30px rgba(91,42,255,0.25) }
+#nextBtn:hover{ transform:translateY(-4px) }
+
+/* small responsive */
+@media (max-width:720px){
+  .option{ flex:1 1 100%; }
+  #card img{ max-height:260px }
+}
+/* ...existing code... */
